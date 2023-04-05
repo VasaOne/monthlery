@@ -21,7 +21,9 @@ setup(
     entry_points={
         'console_scripts': [
             "teleop_node = monthlery.teleop:main",
-            "com_node = monthlery.com:main"
+            "com_node = monthlery.com:main",
+            "ai_node_node = monthlery.ai_node:main",
+            "lidar_to_ai_node = monthlery.lidar_to_ai:main"
         ],
     },
 )
