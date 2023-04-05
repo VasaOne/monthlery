@@ -1,4 +1,4 @@
-import rospy
+import rclpy
 from sensor_msgs.msg import LaserScan
 #from nav_msgs.msg import Odometry
 import tf2_ros
@@ -6,12 +6,12 @@ import tf2_ros
 
 class LaserScanToOdom:
     def __init__(self):
-        rospy.init_node('laser_scan_to_odom')
+        rclpy.init_node('laser_scan_to_odom')
 
         self.tf_buffer = tf2_ros.Buffer()
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer)
 
-        self.sub = rospy.Subscriber('/scan', LaserScan, self.scan_callback)
+        self.sub = rclpy.Subscriber('/scan', LaserScan, self.scan_callback)
         #self.pub = rospy.Publisher('/odom', Odometry, queue_size=10)
 
     def scan_callback(self, scan_msg):
@@ -38,7 +38,7 @@ class LaserScanToOdom:
 
 def main():
     LaserScanToOdom()
-    rospy.spin()
+    rclpy.spin()
 
 if __name__ == '_main_':
     main()
